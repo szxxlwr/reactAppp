@@ -1,0 +1,93 @@
+python
+path  要有两个路径缺一不可以
+C:\Python27
+C:\Python27\Scripts
+
+android SDK 必须完整安装
+
+ANDROID_HOME 
+C:\Users\Administrator\AppData\Local\Android\Sdk
+
+path 配置
+%ANDROID_HOME%\platform-tools
+%ANDROID_HOME%\emulator
+%ANDROID_HOME%\tools
+%ANDROID_HOME%\tools\bin
+
+还有环境变量里面需要配置  
+ANDROID_HOME
+
+基本上就可以正常跑了
+
+-----------------------------------------------
+
+npm uninstall -g react-native-cli
+react-native-cli 自带 react-native 会影响以下 react-native 的操作
+
+npx react-native init ximalaya --template react-native-template-typescript
+
+先运行一下命令  是为了 开发，生产环境的请求接口，修改URL 使用的
+npm i react-native-config -save
+react-native link react-native-config
+
+接着在
+项目文档 --> android --> app --> build.gradle -->
+最后一行添加：
+apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle"
+
+根目录建立.env 文件，添加一下内容：
+API_URL=https://myapi.com;
+GOOGLE_MAPS_API_KEY=abcdefgh;
+
+yarn add babel-plugin-module-resolver
+
+在babel.config.js
+里面添加 plugins（插件）
+plugins: [
+  [
+    'module-resolver',
+    {
+      root: ['./src'],
+      alias: {
+        '@/utils': './src/utils',
+        '@/pages': './src/pages',
+        '@/navigator': './src/navigator',
+        '@/models': './src/models',
+        '@/config': './src/config',
+        '@/components': './src/components',
+        '@/assets': './src/assets',
+      },
+    },
+  ],
+],
+
+接着以下命令很重要，要不然每次配置完之后都要重启：
+删除缓存（iso 操作的） ：  rm -rf /tmp/metro-*
+重新设置缓存（window 操作的）： yarn start --reset-cache
+
+接着设置：tsconfig.json
+"baseUrl": "./src",                          /* Base directory to resolve non-absolute module names. */
+"paths": {
+  "@/assets/*": ["assets/*"],
+  "@/components/*": ["components/*"],
+  "@/models/*": ["models/*"],
+  "@/config/*": ["config/*"],
+  "@/navigater/*": ["navigater/*"],
+  "@/pages/*": ["pages/*"],
+  "@/utils/*": ["utils/*"],
+},  
+
+
+安装一下未来要使用的库
+https://reactnavigation.org/docs/getting-started/（有写明）
+npm install react-native-reanimated react-native-gesture-handler react-native-screens react-native-safe-area-context @react-native-community/masked-view
+
+react-native-reanimated   动画库生成动画
+react-native-gesture-handler    手势库
+react-native-screens  容器组件，导航器对性能是有一定的要求，建议用官方封装好的
+react-native-safe-area-context  一种处理安全区域的灵活方式，也可以在Android和Web上使用！
+@react-native-community/masked-view  
+
+## 如果是ios 需要进入IOS 文件夹 进行pod install 命令，ios 的依赖 （react link android 不需要运行这个命令）
+
+
