@@ -45,8 +45,10 @@ const App = () => {
               {config.API_URL}
             </Text>
             <Text>
-              221133 &nbsp; 333
-              {config.GOOGLE_MAPS_API_KEY}
+              9527&nbsp; 
+              <Text>
+                {config.GOOGLE_MAPS_API_KEY}
+              </Text>
               
             </Text>
           </View>

@@ -43,7 +43,7 @@
       "@/components/*": ["components/*"],
       "@/models/*": ["models/*"],
       "@/config/*": ["config/*"],
-      "@/navigater/*": ["navigater/*"],
+      "@/navigator/*": ["navigator/*"],
       "@/pages/*": ["pages/*"],
       "@/utils/*": ["utils/*"],
     },                           
